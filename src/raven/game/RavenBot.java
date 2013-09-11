@@ -2,7 +2,7 @@ package raven.game;
 
 import java.util.ArrayList;
 
-import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.*;
 import raven.game.messaging.Dispatcher;
 import raven.game.messaging.RavenMessage;
 import raven.game.messaging.Telegram;
@@ -40,7 +40,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 	private RavenSensoryMemory sensoryMem;
 
 	/** the bot uses this object to steer */
-	private RavenSteering steering;
+	private RavenSteering_gANN steering;
 
 	/** the bot uses this object to plan paths */
 	private RavenPathPlanner pathPlanner;
@@ -212,7 +212,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		pathPlanner = new RavenPathPlanner(this);
 
 		// create the steering behavior class
-		steering = new RavenSteering(world, this);
+		steering = new RavenSteering_gANN(world, this);
 
 		// create the regulators
 		weaponSelectionRegulator = new Regulator(
@@ -691,7 +691,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		return world;
 	}
 
-	public RavenSteering getSteering() {
+	public RavenSteering_gANN getSteering() {
 		return steering;
 	}
 

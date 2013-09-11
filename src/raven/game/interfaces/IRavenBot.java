@@ -36,7 +36,7 @@ public interface IRavenBot {
 	public double fieldOfView();
 	public Vector2D scale();
 	public RavenSensoryMemory getSensoryMem();
-	public RavenSteering getSteering();
+	public IRavenSteering getSteering();
 	public void update(double delta);
 	public void setSpawning();
 	public boolean isDead();
