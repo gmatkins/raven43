@@ -120,7 +120,9 @@ public class RavenWeaponSystem {
 						&& owner.hasLOSto(aimingPos)) {
 					addNoiseToAim(aimingPos);
 					
-					getCurrentWeapon().ShootAt(aimingPos);
+					///Shooting should be off now!!!
+					
+					//getCurrentWeapon().ShootAt(aimingPos);
 
 				}
 			}
@@ -133,7 +135,7 @@ public class RavenWeaponSystem {
 						&& owner.hasLOSto(aimingPos)) {
 					addNoiseToAim(aimingPos);
 					
-					getCurrentWeapon().ShootAt(aimingPos);
+					//getCurrentWeapon().ShootAt(aimingPos);
 				}
 			}
 		}

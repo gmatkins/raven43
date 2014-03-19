@@ -44,6 +44,8 @@ public class RavenTargetingSystem {
 	
 	public boolean isTargetShootable() {
 		return owner.getSensoryMem().isOpponentShootable(currentTarget);
+		//how do i make these damn things stop shooting each other???
+		//return false;
 	}
 	
 	public Vector2D getLastRecordedPosition() {

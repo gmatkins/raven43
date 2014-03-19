@@ -40,7 +40,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 	private RavenSensoryMemory sensoryMem;
 
 	/** the bot uses this object to steer */
-	private RavenSteering_gANN steering;
+	private RavenSteering_smartSweeper steering;
 
 	/** the bot uses this object to plan paths */
 	private RavenPathPlanner pathPlanner;
@@ -145,9 +145,18 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		{    
 			heading = new Vector2D(velocity);
 			heading.normalize();
+			facing = heading;
 
 			side = heading.perp();
 		}
+		
+//		if (!velocity.isZero())
+//		{    
+//			heading = new Vector2D(velocity);
+//			heading.normalize();
+//
+//			side = heading.perp();
+//		}
 	}
 
 	/** initializes the bot's VB with its geometry */
@@ -212,7 +221,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		pathPlanner = new RavenPathPlanner(this);
 
 		// create the steering behavior class
-		steering = new RavenSteering_gANN(world, this);
+		steering = new RavenSteering_smartSweeper(world, this);
 
 		// create the regulators
 		weaponSelectionRegulator = new Regulator(
@@ -386,7 +395,9 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 
 			// this method aims the bot's current weapon at the current target
 			// and takes a shot if a shot is possible
-			weaponSys.takeAimAndShoot(delta);
+			///Now do they stop shooting each other???
+			///OK, they should aim but not shoot
+			//weaponSys.takeAimAndShoot(delta);
 		}
 
 	}
@@ -691,7 +702,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		return world;
 	}
 
-	public RavenSteering_gANN getSteering() {
+	public IRavenSteering getSteering() {
 		return steering;
 	}
 
